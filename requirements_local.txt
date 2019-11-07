@@ -1,0 +1,6 @@
+-r requirements.txt
+
+awscli
+aws-sam-cli
+ipython
+
