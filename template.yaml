@@ -1,14 +1,12 @@
 AWSTemplateFormatVersion: 2010-09-09
-Descripion: Creates a Lambda function that builds a ZIP to function as a Lambda layer
+Descripion: Creates a Lambda function to build psycopg2 in the Lambda environment
 
 Parameters:
-  pCodeBucket:
-    Type: String
-  pCodeKey:
+  pCodeUri:
     Type: String
   pTargetBucket:
     Type: String
-  pTargetFolderPattern:
+  pTargetPattern:
     Type: String
     Default: "*"
 
@@ -17,7 +15,7 @@ Resources:
     Type: AWS::IAM::ManagedPolicy
     Properties:
       Path: /NLM/
-      ManagedPolicyName: !Sub "ReadAndWrite-${pTargetBucket}"
+      ManagedPolicyName: PsycopgBuilderRole
       Description: !Sub "Allows writes and reads to keys within ${pTargetBucket}"
       PolicyDocument:
         Version: 2012-10-17
@@ -33,11 +31,12 @@ Resources:
               - s3:DeleteObject
             Effect: Allow
             Resource:
-              - !Sub arn:aws:s3:::${pTargetObject}/${pTargetFolderPattern}
+              - !Sub arn:aws:s3:::${pTargetObject}/${pTargetPattern}
 
   rBuilderRole:
     Type: AWS::IAM::Role
     Properties:
+      RoleName: PsycopgBuilderRole
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
         - !GetAtt rBuilderPolicy.Arn
@@ -50,12 +49,11 @@ Resources:
               Service: lambda.amazonaws.com
 
   rBuilderLambda:
-    Type: AWS::Lambda::Function
+    Type: AWS::Serverless::Function
     Properties:
+      FunctionName: PsycopgBuilder
       Handler: build.handler
       Runtime: python3.6
       Role: !GetAtt rBuilderRole.Arn
-      Code:
-        S3Bucket: !Ref pCodeBucket
-        S3Key: !Ref pCodeKey
+      CodeUri: !Ref pCodeUri
 
