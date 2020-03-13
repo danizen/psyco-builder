@@ -1,6 +1,6 @@
-# psycopg-builder
-
 ![AWS CodeBuild badge](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiS0J6TEU3VFJEVVArOEFjQThSaG5KUWlseDV1RzQ3ZVd5eUlBbDlzNHhVWWl2U2xhRzVPcktkVGE5aDJrQ2JpV3NuVUp5bk5pM3MrVG1lMkpjTnlBN1JnPSIsIml2UGFyYW1ldGVyU3BlYyI6InBuWTAvNUpXOS9zREJybXciLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
+
+# psycopg-builder
 
 ## Summary
 
