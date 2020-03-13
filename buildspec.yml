@@ -8,6 +8,8 @@ env:
 
 phases:
   install:
+    runtime-versions:
+      python: 3.6
     command:
       - yum update
       - yum install 
