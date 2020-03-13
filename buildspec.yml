@@ -14,7 +14,8 @@ phases:
 
   pre_build:
     commands:
-      - bash -ex download.sh
+      - pip install --upgrade pip setuptools wheel
+      - bash -x download.sh
 
   build:
     commands:
