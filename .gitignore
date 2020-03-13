@@ -1,3 +1,7 @@
 *.pyc
 *.pyo
+*.tar.gz
+*.tar.bz2
+/postgresql-*/
+/psycopg2-*/
 

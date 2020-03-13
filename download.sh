@@ -9,6 +9,5 @@ curl -L -O https://ftp.postgresql.org/pub/source/v11.7/${POSTGRESQL_FILE}
 tar xvf ${POSTGRESQL_FILE}
 
 echo "Downloading ${PSYCOPG2_FILE}"
-#curl -L https://github.com/psycopg/psycopg2/archive/${PSYCOPG2_UNDER}.tar.gz -o ${PSYCOPG2_FILE}
-#tar xvf ${PSYCOPG2_FILE}
 pip download --no-binary :all: psycopg2==${PSYCOPG2_VERSION}
+tar xvf ${PSYCOPG2_FILE}

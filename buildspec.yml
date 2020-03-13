@@ -20,4 +20,12 @@ phases:
   build:
     commands:
       - bash -ex build_postgres.sh
-      #- bash -ex build_psycopg2.sh
+      - bash -ex build_psycopg2.sh
+
+  artifacts:
+    wheel:
+      files:
+        - psycopg2-*/dist/*
+      discard-paths: yes
+      name: psycopg2-$(date +%s)
+
