@@ -14,4 +14,5 @@ sed -i \
  setup.cfg
 
 python setup.py bdist_wheel
+ls dist
 
