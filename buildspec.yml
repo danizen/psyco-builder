@@ -1,0 +1,31 @@
+---
+version: 0.2
+
+env:
+  variables:
+    POSTGRESQL_VERSION: 11.7
+    PSYCOPG2_VERSION: 2.8.4
+    PSYCOPG2_UNDER: 2_8_4
+
+phases:
+  install:
+    command:
+      - yum update
+      - yum install 
+
+  pre_build:
+    commands:
+      - POSTGRESQL_FILE=postgresql-${POSTGREQL_VERSION}.tar.bz2
+      - curl -O https://ftp.postgresql.org/pub/source/v11.7/${POSTGRESQL_FILE}
+      - tar xvf ${POSTGRESQL_FILE}
+      - PSYCOPG2_FILE=psycopg2-${PSYCOPG2_VERSION}.tar.gz
+      - curl https://github.com/psycopg/psycopg2/archive/${PSYCOPG2_UNDER}.tar.gz -o ${PSYCOPG2_FILE}
+      - tar xvf ${PSYCOPG2_FILE}
+
+  build:
+    commands:
+      # build postgres 11
+      - cd postgresql-11.7
+      - ./configure --prefix=`pwd` --without-readline --without-zlib --with-openssl
+      - make
+      - make install
