@@ -1,4 +1,4 @@
-#!/bin/bash -ex
+#!/bin/bash
 
 POSTGRESQL_DIR=postgresql-${POSTGRESQL_VERSION}
 
@@ -7,4 +7,3 @@ cd ${POSTGRESQL_DIR}
 ./configure --prefix `pwd` --without-readline --without-zlib --with-openssl
 make
 make install
-ls

@@ -1,4 +1,4 @@
-#!/bin/bash -ex
+#!/bin/bash
 
 POSTGRESQL_FILE=postgresql-${POSTGRESQL_VERSION}.tar.bz2
 PSYCOPG2_FILE=psycopg2-${PSYCOPG2_VERSION}.tar.gz
