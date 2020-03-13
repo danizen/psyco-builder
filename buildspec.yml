@@ -24,8 +24,7 @@ phases:
       - ls psycopg2-*/dist/*.whl
 
 artifacts:
-  wheel:
-    files:
-      - psycopg2-2.8.4/dist/psycopg2-2.8.4-cp38-cp38-linux_x86_64.whl
-    discard-paths: yes
-    name: psycopg2-$(date +%s)
+  files:
+    - psycopg2-*/dist/*
+  discard-paths: yes
+  name: psycopg2-$(date +%s)
